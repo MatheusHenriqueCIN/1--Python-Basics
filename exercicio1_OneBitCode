@@ -32,31 +32,31 @@ dois primeiros caracteres de duas strings diferentes.
 O objetivo é inverter os dois primeiros caracteres
 """
 
-# Adicione as duas frases
+# # Adicione as duas frases
 frase1 = (input("Digite sua primeira frase: "))
 frase2 = (input("Digite sua segunda frase: "))
 
-# Pegue a quantidade de caracteres da primeira string e a da segunda
+# # Pegue a quantidade de caracteres da primeira string e a da segunda
 quantCaract1 = (len(frase1))
 quantCaract1 = quantCaract1 - 1
 quantCaract2 = (len(frase2))
 quantCaract2 = quantCaract2 - 1
 
-#Pegue a letra do ultimo caractere
+# # Pegue a letra do ultimo caractere
 total1 = (frase1[quantCaract1:])
 total2 = (frase2[quantCaract2:])
 
-#Substitua uma letra em cada String
+# # Substitua uma letra em cada String
 totalGeral1 = (frase1.replace(total1,total2))
 totalGeral2 = (frase2.replace(total2,total1))
 
-# Some as duas com espaço entre elas
+# # Some as duas com espaço entre elas
 totalTudal = totalGeral1 + " " + totalGeral2
 
-# Print ela
+# # Print ela
 print(totalTudal)
 
-#Seja Feliz :)
+# # Seja Feliz :)
 
 
 
