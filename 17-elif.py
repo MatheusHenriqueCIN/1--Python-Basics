@@ -4,13 +4,13 @@ operation = input("Digite a operação a realizar (+ - / *)\n")
 
 if operation == "+":
     result = num1 + num2
-elif operation == "-":
+elif operation == "-": # Elif é como se fosse: "se for outra coisa..."
     result = num1 - num2
 elif operation == "*":
     result = num1 * num2
 elif operation == "/":
     result = num1 / num2
-else:
+else: # Se não for nenhuma das variaveis acima mostre:
     print("Operação Inválida")
     result = 0
-print(f"O resultado é: {result:.2f}")
+print(f"O resultado é: {result:.2f}") # Aqui irá mostrar o resultado de um dos if's acima
