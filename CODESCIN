@@ -1,0 +1,44 @@
+
+presente = str(input())
+w = 0
+x = 0
+y = 0
+z = 0
+
+
+
+while (presente != "FIM"):
+  if presente == "Boneco":
+    print("Mais um presente saindo!\n")
+    w += 1
+    presente = str(input())
+  elif presente == "Videogame":
+    print("Mais um presente saindo!\n")
+    x += 1
+    presente = str(input())
+  elif presente == "Bicicleta":
+    print("Mais um presente saindo!\n")
+    y += 1
+    presente = str(input())
+  else:
+    print("Esse presente não está sendo fabricado nesse momento\n")
+    z += 1
+    presente = str(input())
+
+total = w+x+y+z
+
+porcentoBoneco = (w / total) * 100
+porcentoVideoGame = (x / total) * 100
+porcentoBicicleta = (y / total) * 100
+porcentoOutros = (z / total) * 100
+
+
+
+
+print("Vamos agora ao relatório dos presentes!\n")
+print("")
+print(f"Boneco - {w} unidades - XX.XX%")
+print(f"Videogame - {x} unidades - XX.XX%")
+print(f"Bicicleta - {y} unidades - XX.XX%")
+
+  
