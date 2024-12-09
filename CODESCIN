@@ -1,29 +1,32 @@
-
 presente = str(input())
 w = 0
 x = 0
 y = 0
 z = 0
 
+while presente == "FIM":
+  presente = str(input())
 
-
-while (presente != "FIM"):
-  if presente == "Boneco":
-    print("Mais um presente saindo!\n")
-    w += 1
-    presente = str(input())
-  elif presente == "Videogame":
-    print("Mais um presente saindo!\n")
-    x += 1
-    presente = str(input())
-  elif presente == "Bicicleta":
-    print("Mais um presente saindo!\n")
-    y += 1
-    presente = str(input())
-  else:
-    print("Esse presente não está sendo fabricado nesse momento\n")
-    z += 1
-    presente = str(input())
+while presente != "FIM":
+    if presente == "Boneco":
+        print("Mais um presente saindo!")
+        w += 1
+        presente = str(input())
+    elif presente == "Videogame":
+        print("Mais um presente saindo!")
+        x += 1
+        presente = str(input())
+    elif presente == "Bicicleta":
+        print("Mais um presente saindo!")
+        y += 1
+        presente = str(input())
+    elif presente == "FIM":
+        break 
+    else:   
+        print("Esse presente não está sendo fabricado nesse momento")
+        z += 1
+        presente = str(input())
+        
 
 total = w+x+y+z
 
@@ -31,14 +34,28 @@ porcentoBoneco = (w / total) * 100
 porcentoVideoGame = (x / total) * 100
 porcentoBicicleta = (y / total) * 100
 porcentoOutros = (z / total) * 100
-
-
-
-
+    
 print("Vamos agora ao relatório dos presentes!\n")
-print("")
-print(f"Boneco - {w} unidades - XX.XX%")
-print(f"Videogame - {x} unidades - XX.XX%")
-print(f"Bicicleta - {y} unidades - XX.XX%")
+print(f"Boneco - {w} unidades - {porcentoBoneco:.2f}%")
+print(f"Videogame - {x} unidades - {porcentoVideoGame:.2f}%")
+print(f"Bicicleta - {y} unidades - {porcentoBicicleta:.2f}%")
+print(f"Outros - {z} unidades - {porcentoOutros:.2f}%")
+
+if z == 0:
+    print("A demanda está muito alta! Teremos que fazer mais uma fábrica!")
+elif porcentoOutros > 50.00:
+    print("Parece que o Papai Noel terá que fechar a fábrica :(")
+elif (porcentoOutros < 50.00) and (porcentoBoneco < 50.00) and (porcentoVideoGame < 50.00) and (porcentoBicicleta < 50.00):
+    print("A fábrica está cumprindo seu papel, porém não precisa ser expandida")
+elif (porcentoBicicleta > 50.00) or (porcentoBoneco > 50.00) or (porcentoVideoGame >50.00):
+    if (w > x) and (w > y):
+        presenteMaior = "Boneco"
+        print(f"{presenteMaior} está sendo muito desejado! A fábrica terá que ser expandida!")
+    if (x > y) and (x > w):
+        presenteMaior = "Videogame"
+        print(f"{presenteMaior} está sendo muito desejado! A fábrica terá que ser expandida!")
+    if (y > x) and (y > w):
+        presenteMaior = "Bicicleta"
+        print(f"{presenteMaior} está sendo muito desejado! A fábrica terá que ser expandida!")
 
   
