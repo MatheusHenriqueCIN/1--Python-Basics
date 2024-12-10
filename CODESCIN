@@ -1,61 +1,84 @@
-presente = str(input())
-w = 0
-x = 0
-y = 0
-z = 0
+i = 0
 
-while presente == "FIM":
-  presente = str(input())
 
-while presente != "FIM":
-    if presente == "Boneco":
-        print("Mais um presente saindo!")
-        w += 1
-        presente = str(input())
-    elif presente == "Videogame":
-        print("Mais um presente saindo!")
-        x += 1
-        presente = str(input())
-    elif presente == "Bicicleta":
-        print("Mais um presente saindo!")
-        y += 1
-        presente = str(input())
-    elif presente == "FIM":
-        break 
-    else:   
-        print("Esse presente não está sendo fabricado nesse momento")
-        z += 1
-        presente = str(input())
-        
+while i < 3:
+    nome_musica = input()
+    quantidade_streams = input()
 
-total = w+x+y+z
+    if i == 0:
+        variavel_musica1 , variavel_stream1 = nome_musica, quantidade_streams
 
-porcentoBoneco = (w / total) * 100
-porcentoVideoGame = (x / total) * 100
-porcentoBicicleta = (y / total) * 100
-porcentoOutros = (z / total) * 100
-    
-print("Vamos agora ao relatório dos presentes!\n")
-print(f"Boneco - {w} unidades - {porcentoBoneco:.2f}%")
-print(f"Videogame - {x} unidades - {porcentoVideoGame:.2f}%")
-print(f"Bicicleta - {y} unidades - {porcentoBicicleta:.2f}%")
-print(f"Outros - {z} unidades - {porcentoOutros:.2f}%")
+    if i == 1:
+        variavel_musica2 , variavel_stream2 = nome_musica, quantidade_streams
 
-if z == 0:
-    print("A demanda está muito alta! Teremos que fazer mais uma fábrica!")
-elif porcentoOutros > 50.00:
-    print("Parece que o Papai Noel terá que fechar a fábrica :(")
-elif (porcentoOutros < 50.00) and (porcentoBoneco < 50.00) and (porcentoVideoGame < 50.00) and (porcentoBicicleta < 50.00):
-    print("A fábrica está cumprindo seu papel, porém não precisa ser expandida")
-elif (porcentoBicicleta > 50.00) or (porcentoBoneco > 50.00) or (porcentoVideoGame >50.00):
-    if (w > x) and (w > y):
-        presenteMaior = "Boneco"
-        print(f"{presenteMaior} está sendo muito desejado! A fábrica terá que ser expandida!")
-    if (x > y) and (x > w):
-        presenteMaior = "Videogame"
-        print(f"{presenteMaior} está sendo muito desejado! A fábrica terá que ser expandida!")
-    if (y > x) and (y > w):
-        presenteMaior = "Bicicleta"
-        print(f"{presenteMaior} está sendo muito desejado! A fábrica terá que ser expandida!")
+    if i == 2:
+        variavel_musica3 , variavel_stream3 = nome_musica, quantidade_streams
+
+    i += 1
+
+if variavel_stream1 > variavel_stream2 and variavel_stream1 > variavel_stream3:
+    musica_top1 = variavel_musica1
+    qntd_stream1 = variavel_stream1
+    if variavel_stream2 > variavel_stream3:
+        musica_top2 = variavel_musica2
+        qntd_stream2 = variavel_stream2
+        musica_top3 = variavel_musica3
+        qntd_stream3 = variavel_stream3
+    else:
+        musica_top2 = variavel_musica3
+        qntd_stream2 = variavel_stream3
+        musica_top3 = variavel_musica2
+        qntd_stream3 = variavel_stream2
+elif variavel_stream2 > variavel_stream1 and variavel_stream2 > variavel_stream3:
+    musica_top1 = variavel_musica2
+    qntd_stream1 = variavel_stream2
+    if variavel_stream1 > variavel_stream3:
+        musica_top2 = variavel_musica1
+        qntd_stream2 = variavel_stream1
+        musica_top3 = variavel_musica3
+        qntd_stream3 = variavel_stream3
+    else:
+     musica_top2 = variavel_stream3
+     qntd_stream2 = variavel_stream3
+     musica_top3 = variavel_musica1
+     qntd_stream2 = variavel_stream1
+elif variavel_stream3 > variavel_stream1 and variavel_stream3 > variavel_stream2:
+    musica_top1 = variavel_musica3
+    qntd_stream1 = variavel_stream3
+    if variavel_stream2 > variavel_stream1:
+        musica_top2 = variavel_musica2
+        qntd_stream2 = variavel_stream2
+        musica_top3 = variavel_musica1
+        qntd_stream3 = variavel_stream1
+    else:
+        musica_top2 = variavel_musica1
+        qntd_stream2 = variavel_stream1
+        musica_top3 = variavel_musica2
+        qntd_stream3 = variavel_stream2
+
+print(f"{musica_top1} teve {qntd_stream1} de streams e foi a música mais ouvida de Simone!")
+print(f"{musica_top2} teve {qntd_stream2} de streams e foi a segunda música mais ouvida de Simone!")
+print(f"{musica_top3} teve {qntd_stream3} de streams e completou o top 3 das músicas mais ouvidas da artista!")
+
+if qntd_stream1 >  10000000:
+    print(f"Uau! {musica_top1} foi um hit certeiro da rainha do Natal!")
+elif qntd_stream1 < 1000000:
+    print(f"Bom… a música {qntd_stream1} não foi exatamente um sucesso nacional, mas foi o suficiente para entrar no topo da lista das mais ouvidas.")
+
+if qntd_stream2 >  10000000:
+    print(f"Uau! {musica_top2} foi um hit certeiro da rainha do Natal!")
+elif qntd_stream2 < 1000000:
+    print(f"Bom… a música {qntd_stream2} não foi exatamente um sucesso nacional, mas foi o suficiente para entrar no topo da lista das mais ouvidas.") 
+
+if qntd_stream3 >  10000000:
+    print(f"Uau! {musica_top3} foi um hit certeiro da rainha do Natal!")
+elif qntd_stream3 < 1000000:
+    print(f"Bom… a música {qntd_stream3} não foi exatamente um sucesso nacional, mas foi o suficiente para entrar no topo da lista das mais ouvidas.") 
+
+if qntd_stream1 - qntd_stream2 > 5000000:
+    print(f"{musica_top1}foi disparada a mais ouvida neste ano! Nenhuma outra música natalina chega aos pés dela!")
+elif qntd_stream1 - qntd_stream2 < 1000000:
+    print(f"“{musica_top1} foi a mais ouvida, mas não podemos esquecer da música {musica_top2}! Fez bonito nesse feriado!”")
+
 
   
