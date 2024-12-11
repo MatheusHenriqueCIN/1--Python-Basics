@@ -1,84 +1,88 @@
+qntd_rodada = int(input())
+pontuacao_finalDuende = 0
+pontuacao_finalElfo = 0
+meia = 0
+contador_duende = 0
+contador_elfos = 0
+
+
+while qntd_rodada == 0:
+    qntd_rodada = int(input)
+print("O Torneio de Natal começa agora! Que vençam os melhores!")
 i = 0
+while i <= qntd_rodada-1:
+    print(f"RODADA {i+1}")
+    equipe = input()
+    desafio = input()
+    dificuldade = input()
+    if desafio == "Prepararam as roupas do Papai Noel" or desafio == "Alimentaram as renas.":
+        meia += 10
+    elif desafio == "Arrumaram os estoques de doces." or desafio == "Guardaram os presentes no trenó.":
+        meia += 20
+    elif desafio == "Ajudaram a carregar os presentes." or desafio == "Embrulharam os presentes." or desafio == "Decoraram a árvore de Natal.":
+        meia += 30
+    elif desafio == "Planejaram a rota do Papai Noel.":
+        meia += 50
+    elif desafio == "Testaram os brinquedos.":
+        brinquedo_test = int(input())
+        meia = 2 * brinquedo_test
 
-
-while i < 3:
-    nome_musica = input()
-    quantidade_streams = input()
-
-    if i == 0:
-        variavel_musica1 , variavel_stream1 = nome_musica, quantidade_streams
-
-    if i == 1:
-        variavel_musica2 , variavel_stream2 = nome_musica, quantidade_streams
-
-    if i == 2:
-        variavel_musica3 , variavel_stream3 = nome_musica, quantidade_streams
-
+    if dificuldade == "Fácil":
+        meia = meia * 1
+    elif dificuldade == "Médio":
+        meia = meia * 1.20
+    elif dificuldade == "Difícil":
+        if equipe == "Duendes":
+            contador_duende += 1
+            meia = meia * 1.5
+        elif equipe == "Elfos":
+            contador_elfos += 1
+            meia = meia * 1.5
+    
+    evento_surpresa = input()
+    if evento_surpresa == "Dia de Sorte":
+        print("É um Dia de Sorte! Vocês ganharam 30 meias bônus!")
+        meia += 30
+    elif evento_surpresa == "Dia de Azar":
+        print("É um Dia de Azar! Vocês perderam 30 meias!")
+        if meia < 30:
+            meia = 0
+        else:
+            meia -= 30
+    elif evento_surpresa == "Grinch":
+        print("O Grinch está sabotando o Torneio!")
+        cor = input()
+        while cor != f"{equipe}, protejam as meias!" or meia != 0:
+            if cor == "Amarelas":
+                meia -= 5
+            elif cor == "Verdes":
+                meia -= 10
+            elif cor == "Vermelhas":
+                meia -= 20
+            if meia != 0:
+                cor = input()
+    if meia == 0:
+        print(f"Infelizmente, a equipe dos {equipe} não ganhou meias nessa rodada.")
+    else:
+        print(f"A equipe dos {equipe} ganhou {meia} meias nesta rodada.")
+    if equipe == "Duendes":
+        pontuacao_finalDuende = meia
+    elif equipe == "Elfos":
+        pontuacao_finalElfo = meia
     i += 1
 
-if variavel_stream1 > variavel_stream2 and variavel_stream1 > variavel_stream3:
-    musica_top1 = variavel_musica1
-    qntd_stream1 = variavel_stream1
-    if variavel_stream2 > variavel_stream3:
-        musica_top2 = variavel_musica2
-        qntd_stream2 = variavel_stream2
-        musica_top3 = variavel_musica3
-        qntd_stream3 = variavel_stream3
-    else:
-        musica_top2 = variavel_musica3
-        qntd_stream2 = variavel_stream3
-        musica_top3 = variavel_musica2
-        qntd_stream3 = variavel_stream2
-elif variavel_stream2 > variavel_stream1 and variavel_stream2 > variavel_stream3:
-    musica_top1 = variavel_musica2
-    qntd_stream1 = variavel_stream2
-    if variavel_stream1 > variavel_stream3:
-        musica_top2 = variavel_musica1
-        qntd_stream2 = variavel_stream1
-        musica_top3 = variavel_musica3
-        qntd_stream3 = variavel_stream3
-    else:
-     musica_top2 = variavel_stream3
-     qntd_stream2 = variavel_stream3
-     musica_top3 = variavel_musica1
-     qntd_stream2 = variavel_stream1
-elif variavel_stream3 > variavel_stream1 and variavel_stream3 > variavel_stream2:
-    musica_top1 = variavel_musica3
-    qntd_stream1 = variavel_stream3
-    if variavel_stream2 > variavel_stream1:
-        musica_top2 = variavel_musica2
-        qntd_stream2 = variavel_stream2
-        musica_top3 = variavel_musica1
-        qntd_stream3 = variavel_stream1
-    else:
-        musica_top2 = variavel_musica1
-        qntd_stream2 = variavel_stream1
-        musica_top3 = variavel_musica2
-        qntd_stream3 = variavel_stream2
+print("TORNEIO ENCERRADO!")
+print("Segurem seus gorros que o Noel já vai entregar o Prêmio da Estrela Natalina.")
 
-print(f"{musica_top1} teve {qntd_stream1} de streams e foi a música mais ouvida de Simone!")
-print(f"{musica_top2} teve {qntd_stream2} de streams e foi a segunda música mais ouvida de Simone!")
-print(f"{musica_top3} teve {qntd_stream3} de streams e completou o top 3 das músicas mais ouvidas da artista!")
-
-if qntd_stream1 >  10000000:
-    print(f"Uau! {musica_top1} foi um hit certeiro da rainha do Natal!")
-elif qntd_stream1 < 1000000:
-    print(f"Bom… a música {qntd_stream1} não foi exatamente um sucesso nacional, mas foi o suficiente para entrar no topo da lista das mais ouvidas.")
-
-if qntd_stream2 >  10000000:
-    print(f"Uau! {musica_top2} foi um hit certeiro da rainha do Natal!")
-elif qntd_stream2 < 1000000:
-    print(f"Bom… a música {qntd_stream2} não foi exatamente um sucesso nacional, mas foi o suficiente para entrar no topo da lista das mais ouvidas.") 
-
-if qntd_stream3 >  10000000:
-    print(f"Uau! {musica_top3} foi um hit certeiro da rainha do Natal!")
-elif qntd_stream3 < 1000000:
-    print(f"Bom… a música {qntd_stream3} não foi exatamente um sucesso nacional, mas foi o suficiente para entrar no topo da lista das mais ouvidas.") 
-
-if qntd_stream1 - qntd_stream2 > 5000000:
-    print(f"{musica_top1}foi disparada a mais ouvida neste ano! Nenhuma outra música natalina chega aos pés dela!")
-elif qntd_stream1 - qntd_stream2 < 1000000:
-    print(f"“{musica_top1} foi a mais ouvida, mas não podemos esquecer da música {musica_top2}! Fez bonito nesse feriado!”")
+if pontuacao_finalDuende > pontuacao_finalElfo:
+    print(f"Os Duendes venceram o Torneio de Natal com um total de {pontuacao_finalDuende} meias e terão a honra de ajudar o Papai Noel na noite mais mágica do ano.")
+elif pontuacao_finalDuende < pontuacao_finalElfo:
+    print(f"Os Elfos venceram o Torneio de Natal com um total de {pontuacao_finalElfo} meias e terão a honra de ajudar o Papai Noel na noite mais mágica do ano.")
+elif pontuacao_finalDuende == pontuacao_finalElfo:
+    if contador_duende < contador_elfos:
+        print(f"Os Elfos venceram o Torneio de Natal com um total de {pontuacao_finalElfo} meias e terão a honra de ajudar o Papai Noel na noite mais mágica do ano.")
+    elif contador_duende > contador_elfos:
+        print(f"Os Duendes venceram o Torneio de Natal com um total de {pontuacao_finalDuende} meias e terão a honra de ajudar o Papai Noel na noite mais mágica do ano.")
 
 
   
